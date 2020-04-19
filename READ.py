@@ -18,8 +18,7 @@ for comment in data: # 將 data 每筆資料命名為變數 comment
 	# print(sum_len) # 顯示加總過程
 print('所有留言平均長度為', sum_len/len(data))
 
-#-----------------------------------------------------------------------
-
+###-----------------------------------------------------------------------
 lessthan100 = [] # 新增長度"小於100"的留言筆數清單
 for shortcomment in data: # 從 data 清單撈資料命名為變數 lcomment
 	if len(shortcomment) < 100: # 如果留言長度小於100
@@ -27,8 +26,7 @@ for shortcomment in data: # 從 data 清單撈資料命名為變數 lcomment
 print('長度小於100的留言有', len(lessthan100), '筆')
 # print('長度小於100第一筆資料為', lessthan100[0]) # 顯示長度小於100第一筆資料
 
-#-----------------------------------------------------------------------
-
+###-----------------------------------------------------------------------
 good_comment_list = [] # 新增含有 good 留言筆數清單
 for good_comment in data: # 從 data 清單撈資料命名為變數 good_comment
 	if 'good' in good_comment: # 如果 good_comment 包含 good 字串
@@ -36,11 +34,44 @@ for good_comment in data: # 從 data 清單撈資料命名為變數 good_comment
 print('包含good留言有', len(good_comment_list), '筆')
 # print('包含good的第一筆留言是', good_comment_list[0]) # 顯示包含good的第一筆留言
 
-#-----------------------------------------------------------------------
-
+###-----------------------------------------------------------------------
 bad_comment_list = [] # 新增含有 bad 留言筆數清單
 for bad_comment in data: # 從 data 清單撈資料命名為變數 bad_comment
 	if 'bad' in bad_comment: # 如果 bad_comment 包含 bad 字串
 		bad_comment_list.append(bad_comment) # 把留言加到 bad_comment_list 清單
 print('包含bad留言有', len(bad_comment_list), '筆')
 # print('包含bad的第一筆留言是', bad_comment_list[0]) # 顯示包含bad的第一筆留言
+
+###-----------------------------------------------------------------------
+###快寫法1
+bad_comment_list = [bad_comment for bad_comment in data if 'bad' in bad_comment]
+### 解讀如下
+### bad_comment_list = [bad_comment for bad_comment in data if 'bad' in bad_comment]
+###                                 for bad_comment in data = 42 行
+### bad_comment_list = [bad_comment for bad_comment in data if 'bad' in bad_comment]
+###                                                         if 'bad' in bad_comment = 43 行
+### bad_comment_list = [bad_comment for bad_comment in data if 'bad' in bad_comment]
+###          寫入上面這個bad_comment 如果 53 行 及 55 行條件都符合
+print('包含bad留言有', len(bad_comment_list), '筆')
+
+###-----------------------------------------------------------------------
+###快寫法示範
+bad_comment_list = [1 for bad_comment in data if 'bad' in bad_comment]
+# print(bad_comment_list) # 把有 bad 都留言都以 1 顯示
+
+###-----------------------------------------------------------------------
+bad =[]
+for d in data:
+	bad.append('bad' in d) # 'bad' in d 為判斷, 輸出為 True 或 False
+print(bad_comment_list)
+
+###-----------------------------------------------------------------------
+###快寫法
+bad_comment_list = ['bad' in d for d in data] # 'bad' in bad_comment = 判斷 True 或 False
+# print(bad_comment_list) # 把有 bad 都留言都以 True 顯示 , 沒有 bad 都留言都以 False 顯示
+### 解讀如下
+### bad_comment_list = ['bad' in bad_comment for bad_comment in data]
+###                                          for bad_comment in data 後面沒有 if 篩選
+### bad_comment_list = ['bad' in bad_comment for bad_comment in data]
+###                    |                    |
+###                      寫入 True 或 False
