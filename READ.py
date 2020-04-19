@@ -18,9 +18,29 @@ for comment in data: # 將 data 每筆資料命名為變數 comment
 	# print(sum_len) # 顯示加總過程
 print('所有留言平均長度為', sum_len/len(data))
 
+#-----------------------------------------------------------------------
+
 lessthan100 = [] # 新增長度"小於100"的留言筆數清單
 for shortcomment in data: # 從 data 清單撈資料命名為變數 lcomment
 	if len(shortcomment) < 100: # 如果留言長度小於100
 		lessthan100.append(shortcomment) # 將如果留言長度小於100的留言加到 lessthan100 清單
 print('長度小於100的留言有', len(lessthan100), '筆')
-print('長度小於100第一筆資料為', lessthan100[0])
+# print('長度小於100第一筆資料為', lessthan100[0]) # 顯示長度小於100第一筆資料
+
+#-----------------------------------------------------------------------
+
+good_comment_list = [] # 新增含有 good 留言筆數清單
+for good_comment in data: # 從 data 清單撈資料命名為變數 good_comment
+	if 'good' in good_comment: # 如果 good_comment 包含 good 字串
+		good_comment_list.append(good_comment) # 把留言加到 good_comment_list 清單
+print('包含good留言有', len(good_comment_list), '筆')
+# print('包含good的第一筆留言是', good_comment_list[0]) # 顯示包含good的第一筆留言
+
+#-----------------------------------------------------------------------
+
+bad_comment_list = [] # 新增含有 bad 留言筆數清單
+for bad_comment in data: # 從 data 清單撈資料命名為變數 bad_comment
+	if 'bad' in bad_comment: # 如果 bad_comment 包含 bad 字串
+		bad_comment_list.append(bad_comment) # 把留言加到 bad_comment_list 清單
+print('包含bad留言有', len(bad_comment_list), '筆')
+# print('包含bad的第一筆留言是', bad_comment_list[0]) # 顯示包含bad的第一筆留言
