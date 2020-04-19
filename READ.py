@@ -23,3 +23,4 @@ for shortcomment in data: # 從 data 清單撈資料命名為變數 lcomment
 	if len(shortcomment) < 100: # 如果留言長度小於100
 		lessthan100.append(shortcomment) # 將如果留言長度小於100的留言加到 lessthan100 清單
 print('長度小於100的留言有', len(lessthan100), '筆')
+print('長度小於100第一筆資料為', lessthan100[0])
